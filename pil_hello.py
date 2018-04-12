@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # http://effbot.org/imagingbook/introduction.htm
 # https://en.wikibooks.org/wiki/Python_Imaging_Library/Editing_Pixels
 # http://pillow.readthedocs.io/en/3.1.x/reference/ImageDraw.html
@@ -5,6 +7,8 @@
 import PIL.ImageDraw as ImageDraw
 import PIL.Image as Image
 import random as rnd
+import numpy as np
+import matplotlib.pyplot as plt
 
 inputFilePath = "input.jpg"
 outputFilePath = "output.png"
@@ -31,5 +35,8 @@ points = []
 for i in range(0, 100):
     points.append((rnd.randrange(image.size[0]), rnd.randrange(image.size[1])))
 draw.polygon(points, fill=(127, 127, 127), outline=(255,255,255))
+
+plt.imshow(np.uint8(image))
+plt.show()
 
 image.save(outputFilePath)
